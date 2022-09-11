@@ -53,6 +53,8 @@ WorkingDirectory=/home/${USER}/Covenant/Covenant
 SyslogIdentifier=covenant
 Environment=DOTNET_ROOT=/home/${USER}/dotnet
 User=${USER}
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
 [Install]
 WantedBy=multi-user.target
 EOL
