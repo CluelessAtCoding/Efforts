@@ -4,7 +4,7 @@ I had need to review a firewall config and did not want to pay for a tool so I w
 
 It decodes and parses the provided Sonicwall exp file and exports some key information out to worksheets in an Excel Spreadsheet. 
 
-It does not parse all the information in the exp file and should defintitely be considered a work in progress. 
+It does not parse all the information in the exp file and should definitely be considered a work in progress. I will add some extra categories over time. 
 
 Install the Python requirements with :
 
@@ -12,4 +12,4 @@ Install the Python requirements with :
 
 Invoke the script passing the exp filename in the command line:
 
-- ./parse_sonicwall_exp.py ./sonicwall-ABCDEF123456-19991231235959.exp  
+- ./parse_sonicwall_exp.py ./sonicwall-ABCDEF123456-1999123125959.exp  
