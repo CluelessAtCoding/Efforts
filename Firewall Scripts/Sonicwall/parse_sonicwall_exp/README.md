@@ -1,6 +1,8 @@
 # parse_sonicwall_exp.py
 
-Decodes and parses the provided Sonicwall exp file and exports some key information out to worksheets in an Excel Spreadsheet. 
+I had need to review a firewall config and did not want to pay for a tool so I wrote a script to do some of the heavy lifting for me. 
+
+It decodes and parses the provided Sonicwall exp file and exports some key information out to worksheets in an Excel Spreadsheet. 
 
 It does not parse all the information in the exp file and should defintitely be considered a work in progress. 
 
