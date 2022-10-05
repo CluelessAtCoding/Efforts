@@ -351,6 +351,33 @@ ResultInfo["VarName"] = "natobjects"
 ResultInfo["SheetName"] = "NAT Objects"
 ResultsCollection.append(ResultInfo)
 
+#Enumerate Number of VPN policies
+vpncount = 0
+for key in myconfig:
+    if (key.startswith('vpnPolicyType_')):
+        vpncount = vpncount + 1
+     
+#Enumerate VPN Policies and collect certain values
+vpnobjects = []
+iteration = 0
+while iteration < vpncount:
+    vpnobject = {}
+    vpnobject["#"] = iteration
+    vpnobject["Name"] = myconfig["ipsecName_"+str(iteration)]
+    vpnobject["IPSed Primary Gateway"] = myconfig["ipsecGwAddr_"+str(iteration)]
+    vpnobject["IPSec Secondary Gateway"] = myconfig["ipsecSecGwAddr_"+str(iteration)]
+    vpnobject["Phase 1 Local ID"] = myconfig["ipsecPhase1LocalId_"+str(iteration)]
+    vpnobject["Phase 1 Remote ID"] = myconfig["ipsecPhase1RemoteId_"+str(iteration)]
+    vpnobject["Local Network"] = myconfig["ipsecLocalNetwork_"+str(iteration)]
+    vpnobject["Remote Netork"] = myconfig["ipsecRemoteNetwork_"+str(iteration)]
+    vpnobject["Disabled"] = int(myconfig["ipsecSaDisabled_"+str(iteration)])
+    vpnobjects.append(vpnobject)
+    iteration = iteration + 1
+ResultInfo= {}
+ResultInfo["VarName"] = "vpnobjects"
+ResultInfo["SheetName"] = "VPN Objects"
+ResultsCollection.append(ResultInfo)
+
 # Output Results to XLSX
 # Create a Pandas Excel writer using XlsxWriter as the engine.
 writer = pd.ExcelWriter(excelfile, engine='xlsxwriter')
