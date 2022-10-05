@@ -370,7 +370,7 @@ while iteration < vpncount:
     vpnobject["Phase 1 Remote ID"] = myconfig["ipsecPhase1RemoteId_"+str(iteration)]
     vpnobject["Local Network"] = myconfig["ipsecLocalNetwork_"+str(iteration)]
     vpnobject["Remote Netork"] = myconfig["ipsecRemoteNetwork_"+str(iteration)]
-    vpnobject["Disabled"] = int(myconfig["ipsecSaDisabled_"+str(iteration)])
+    vpnobject["Disabled"] = myconfig["ipsecSaDisabled_"+str(iteration)]
     vpnobjects.append(vpnobject)
     iteration = iteration + 1
 ResultInfo= {}
