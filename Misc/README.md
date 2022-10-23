@@ -7,4 +7,4 @@ When the script is done all you need to do is make the final changes to /etc/hap
 
 If you want to see what is going on when the script runs simply change the log value to standard out. I will add an option for this later. 
 
-![Script Complete](install_haproxy_screenshot.jpg?raw=true "Script Complete")
+![Script Complete](https://github.com/CluelessAtCoding/Efforts/blob/main/Misc/install_haproxy_screenshot.JPG?raw=true "Script Complete")
