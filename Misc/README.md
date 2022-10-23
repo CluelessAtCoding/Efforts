@@ -1,4 +1,4 @@
-# install_haproxy.sh
+# haproxy_install.sh
 This script downloads, extracts and installs the version of OpenSSL 3 and HAPoxy 2.6 specified at the beginning of the script.
 
 Simply make the script executable and run using sudo or as root. 
