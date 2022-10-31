@@ -501,7 +501,7 @@ Description=HAProxy Load Balancer
 After=network.target
 
 [Service]
-Environment=LD_LIBRARY_PATH=/opt/openssl-1.1.1d/lib/
+Environment=LD_LIBRARY_PATH=change_me
 EnvironmentFile=-/etc/default/haproxy
 EnvironmentFile=-/etc/sysconfig/haproxy
 Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
@@ -517,6 +517,8 @@ Type=notify
 [Install]
 WantedBy=multi-user.target
 EOL
+
+sed -i "s/Environment=LD_LIBRARY_PATH=change_me/Environment=LD_LIBRARY_PATH=\/opt\/openssl-${OPENSSLVERSION}\/lib64/g" /lib/systemd/system/haproxy.service
 
 #Create modsecurity service file
 cat >> /lib/systemd/system/modsecurity.service << 'EOL'
