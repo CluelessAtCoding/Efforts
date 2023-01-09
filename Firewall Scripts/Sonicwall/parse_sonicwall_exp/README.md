@@ -12,4 +12,16 @@ Install the Python requirements with :
 
 Invoke the script passing the exp filename in the command line:
 
-- ./parse_sonicwall_exp.py ./sonicwall-ABCDEF123456-1999123125959.exp  
+- ./parse_sonicwall_exp.py ./sonicwall-ABCDEF123456-1999123125959.exp
+
+# parse_sonicwall_v3.py
+
+An updated version of my script, which will now parse decoded export files as well as encoded exp files.
+
+To decode and parse an encoded file:
+
+- ./parse_sonicwall_v3.py ./sonicwall-ABCDEF123456-1999123125959.exp --encoded
+
+To parse an already decoded file:
+
+- ./parse_sonicwall_v3.py ./sonicwall-ABCDEF123456-1999123125959.txt
