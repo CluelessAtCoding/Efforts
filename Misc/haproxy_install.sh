@@ -3,8 +3,8 @@
 
 # Change the version numbers as required
 USER="haproxy"
-OPENSSLVERSION="3.0.5"
-HAPROXYVERSION="2.6.6"
+OPENSSLVERSION="3.0.8"
+HAPROXYVERSION="2.6.10"
 
 
 #Changing things below here may break things
@@ -504,7 +504,7 @@ After=network.target
 Environment=LD_LIBRARY_PATH=change_me
 EnvironmentFile=-/etc/default/haproxy
 EnvironmentFile=-/etc/sysconfig/haproxy
-Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
+Environment="CONFIG=/etc/haproxy/haproxy.conf" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
 ExecStartPre=/usr/local/sbin/haproxy -f $CONFIG -c -q $EXTRAOPTS
 ExecStart=/usr/local/sbin/haproxy -Ws -f $CONFIG -p $PIDFILE $EXTRAOPTS
 ExecReload=/usr/local/sbin/haproxy -f $CONFIG -c -q $EXTRAOPTS
