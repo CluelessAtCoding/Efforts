@@ -314,7 +314,7 @@ echo "----------------------------------"
 echo ""
 mkdir -p /etc/haproxy/cert
 mkdir -p /var/log/haproxy
-make TARGET=linux-glibc USE_PCRE=1 SSL_LIB=/opt/openssl-${OPENSSLVERSION}/lib64 SSL_INC=/opt/openssl-${OPENSSLVERSION}/include USE_ZLIB=1 USE_SYSTEMD=1
+make TARGET=linux-glibc USE_PCRE=1 USE_OPENSSL=1 SSL_LIB=/opt/openssl-${OPENSSLVERSION}/lib64 SSL_INC=/opt/openssl-${OPENSSLVERSION}/include USE_ZLIB=1 USE_SYSTEMD=1
 make install
 }
 
@@ -404,7 +404,7 @@ global
     ssl-dh-param-file /etc/haproxy/dhparam.pem
     log 127.0.0.1 local0
     stats socket 127.0.0.1:14567
-    tune.ssl.default-dh-param	4096
+    tune.ssl.default-dh-param 4096
     server-state-file /tmp/haproxy_server_state
     ssl-default-bind-options ssl-min-ver TLSv1.2
     ssl-default-server-options ssl-min-ver TLSv1.2
@@ -437,9 +437,9 @@ frontend myfrontend
     http-request set-header		X-Forwarded-Proto http if !https
     http-request set-header		X-Forwarded-Proto https if https
     timeout client		30000
-    acl			ACL1	var(txn.txnhost) -m str -i host.domain.com
+    acl ACL1 var(txn.txnhost) -m str -i host.domain.com
     http-request set-var(txn.txnhost) hdr(host)
-    use_backend example1  if  ACL1
+    use_backend example1 if ACL1
     
 backend spoe-modsecurity
       mode tcp
