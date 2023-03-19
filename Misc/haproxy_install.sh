@@ -397,8 +397,8 @@ cat >> /etc/haproxy/spoe-modsecurity.conf << 'EOL'
         event  on-frontend-http-request
 EOL
 
-#Create haproxy.conf
-cat >> /etc/haproxy/haproxy.conf << 'EOL'
+#Create haproxy.cfg
+cat >> /etc/haproxy/haproxy.cfg << 'EOL'
 global
     maxconn 20480
     ssl-dh-param-file /etc/haproxy/dhparam.pem
@@ -504,7 +504,7 @@ After=network.target
 Environment=LD_LIBRARY_PATH=change_me
 EnvironmentFile=-/etc/default/haproxy
 EnvironmentFile=-/etc/sysconfig/haproxy
-Environment="CONFIG=/etc/haproxy/haproxy.conf" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
+Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
 ExecStartPre=/usr/local/sbin/haproxy -f $CONFIG -c -q $EXTRAOPTS
 ExecStart=/usr/local/sbin/haproxy -Ws -f $CONFIG -p $PIDFILE $EXTRAOPTS
 ExecReload=/usr/local/sbin/haproxy -f $CONFIG -c -q $EXTRAOPTS
@@ -564,7 +564,7 @@ echo "------------------------------------------------------------"
 echo ""
 echo "Upload your TLS certificate to /etc/haproxy/cert/haproxy.pem"
 echo ""
-echo "Edit /etc/haproxy/haproxy.conf to your requirements"
+echo "Edit /etc/haproxy/haproxy.cfg to your requirements"
 echo ""
 echo "Then start things running with:"
 echo ""
