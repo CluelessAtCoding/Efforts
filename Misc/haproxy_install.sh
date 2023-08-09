@@ -3,8 +3,8 @@
 
 # Change the version numbers as required
 USER="haproxy"
-OPENSSLVERSION="3.0.8"
-HAPROXYVERSION="2.6.10"
+OPENSSLVERSION="3.0.9"
+HAPROXYVERSION="2.8.1"
 
 
 #Changing things below here may break things
@@ -32,7 +32,7 @@ cat <<EO
 │           HAProxy with Modsecurity utilising            │
 │                      OpenSSL 3.x.x                      │
 │                                                         │
-│                   Cluelessatcoding 2022                 │
+│               Cluelessatcoding 2022,2023                │
 │                                                         │
 │                                                         │
 │                                                         │
@@ -314,6 +314,8 @@ echo "----------------------------------"
 echo ""
 mkdir -p /etc/haproxy/cert
 mkdir -p /var/log/haproxy
+chmod -R 775 /var/log/haproxy
+chgrp -R syslog /var/log/haproxy
 make TARGET=linux-glibc USE_PCRE=1 USE_OPENSSL=1 SSL_LIB=/opt/openssl-${OPENSSLVERSION}/lib64 SSL_INC=/opt/openssl-${OPENSSLVERSION}/include USE_ZLIB=1 USE_SYSTEMD=1
 make install
 }
