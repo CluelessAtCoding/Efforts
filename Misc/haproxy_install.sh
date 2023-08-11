@@ -120,7 +120,7 @@ echo "-------------------"
 echo "Creating Patch File"
 echo "-------------------"
 echo ""
-cat >> /tmp/spoa-modsecurity_Makefile.patch << 'EOL'
+cat > /tmp/spoa-modsecurity_Makefile.patch << 'EOL'
 --- /usr/src/haproxy-2.4.16/spoa-modsecurity/Makefile   2022-05-11 09:26:29.515365331 +0000
 +++ /usr/src/haproxy-2.4.15/spoa-modsecurity/Makefile   2022-04-05 16:09:59.806381854 +0000
 @@ -6,19 +6,19 @@
@@ -158,7 +158,7 @@ cat >> /tmp/spoa-modsecurity_Makefile.patch << 'EOL'
 EOL
 
 elif [[ $ScriptOSFamily == "Debian" ]]; then
-cat >> /tmp/spoa-modsecurity_Makefile.patch << 'EOL'
+cat > /tmp/spoa-modsecurity_Makefile.patch << 'EOL'
 --- /usr/src/haproxy-2.4.16/spoa-modsecurity/Makefile   2022-05-11 09:26:29.515365331 +0000
 +++ /usr/src/haproxy-2.4.15/spoa-modsecurity/Makefile   2022-04-05 16:09:59.806381854 +0000
 @@ -6,11 +6,11 @@
@@ -247,7 +247,7 @@ echo "----------------------"
 echo "Updating Library Links"
 echo "----------------------"
 echo ""
-cat >> /etc/ld.so.conf.d/openssl-${OPENSSLVERSION}.conf  << EOL
+cat > /etc/ld.so.conf.d/openssl-${OPENSSLVERSION}.conf  << EOL
 /opt/openssl-${OPENSSLVERSION}/lib64
 EOL
 
@@ -350,7 +350,7 @@ cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity
 cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity/ModSecurity/modsecurity.conf-recommended /opt/modsecurity/modsecurity.conf
 
 #Update modsecurity.conf
-cat >> /opt/modsecurity/modsecurity.conf << 'EOL'
+cat > /opt/modsecurity/modsecurity.conf << 'EOL'
 
 include /opt/owasp-modsecurity-crs/crs-setup.conf
 include /opt/owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
@@ -385,7 +385,7 @@ sed -i "s/SecUnicodeMapFile unicode.mapping/SecUnicodeMapFile \/opt\/modsecurity
 
 create_configuration_files(){
 #Create spoe-modsecurity.conf
-cat >> /etc/haproxy/spoe-modsecurity.conf << 'EOL'
+cat > /etc/haproxy/spoe-modsecurity.conf << 'EOL'
 [modsecurity]
     spoe-agent modsecurity-agent
         messages     check-request
@@ -400,7 +400,7 @@ cat >> /etc/haproxy/spoe-modsecurity.conf << 'EOL'
 EOL
 
 #Create haproxy.cfg
-cat >> /etc/haproxy/haproxy.cfg << 'EOL'
+cat > /etc/haproxy/haproxy.cfg << 'EOL'
 global
     maxconn 20480
     ssl-dh-param-file /etc/haproxy/dhparam.pem
@@ -465,7 +465,7 @@ backend example1
 EOL
 
 #Create rsyslog haproxy.conf
-cat >> /etc/rsyslog.d/haproxy.conf << 'EOL'
+cat > /etc/rsyslog.d/haproxy.conf << 'EOL'
 $ModLoad imudp
 $UDPServerRun 514 
 $template Haproxy,"%msg%\n"
@@ -476,7 +476,7 @@ local0.* ~
 EOL
 
 #Create logrotate haproxy
-cat >> /etc/logrotate.d/haproxy << 'EOL'
+cat > /etc/logrotate.d/haproxy << 'EOL'
 /var/log/haproxy/*.log
 {
     missingok
@@ -497,7 +497,7 @@ EOL
 
 create_service_files(){
 #Create haproxy service file
-cat >> /lib/systemd/system/haproxy.service << 'EOL'
+cat > /lib/systemd/system/haproxy.service << 'EOL'
 [Unit]
 Description=HAProxy Load Balancer
 After=network.target
@@ -523,7 +523,7 @@ EOL
 sed -i "s/Environment=LD_LIBRARY_PATH=change_me/Environment=LD_LIBRARY_PATH=\/opt\/openssl-${OPENSSLVERSION}\/lib64/g" /lib/systemd/system/haproxy.service
 
 #Create modsecurity service file
-cat >> /lib/systemd/system/modsecurity.service << 'EOL'
+cat > /lib/systemd/system/modsecurity.service << 'EOL'
 [Unit]
 Description=Modsecurity Standalone
 After=network.target
