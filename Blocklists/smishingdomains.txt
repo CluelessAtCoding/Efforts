@@ -16,3 +16,4 @@ postoffice-depot-deliver.com
 postviadpd.com
 tservices.cloud
 old.csme.caricom.org
+evri.courier-status.com
