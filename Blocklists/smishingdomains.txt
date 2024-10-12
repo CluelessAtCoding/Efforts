@@ -18,3 +18,4 @@ tservices.cloud
 old.csme.caricom.org
 evri.courier-status.com
 royal-mail-details.web.app
+royalmailzl.info
