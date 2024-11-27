@@ -350,7 +350,7 @@ cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity
 cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity/ModSecurity/modsecurity.conf-recommended /opt/modsecurity/modsecurity.conf
 
 #Update modsecurity.conf
-cat > /opt/modsecurity/modsecurity.conf << 'EOL'
+cat >> /opt/modsecurity/modsecurity.conf << 'EOL'
 
 include /opt/owasp-modsecurity-crs/crs-setup.conf
 include /opt/owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
