@@ -3,8 +3,8 @@
 
 # Change the version numbers as required
 USER="haproxy"
-OPENSSLVERSION="3.0.9"
-HAPROXYVERSION="2.8.1"
+OPENSSLVERSION="3.0.15"
+HAPROXYVERSION="2.8.12"
 
 
 #Changing things below here may break things
