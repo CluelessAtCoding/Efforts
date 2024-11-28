@@ -32,7 +32,7 @@ cat <<EO
 │           HAProxy with Modsecurity utilising            │
 │                      OpenSSL 3.x.x                      │
 │                                                         │
-│               Cluelessatcoding 2022,2023                │
+│               Cluelessatcoding 2022-2024                │
 │                                                         │
 │                                                         │
 │                                                         │
