@@ -3,8 +3,8 @@
 
 # Change the version numbers as required
 USER="haproxy"
-OPENSSLVERSION="3.0.9"
-HAPROXYVERSION="2.8.1"
+OPENSSLVERSION="3.0.15"
+HAPROXYVERSION="2.8.12"
 
 
 #Changing things below here may break things
@@ -32,7 +32,7 @@ cat <<EO
 │           HAProxy with Modsecurity utilising            │
 │                      OpenSSL 3.x.x                      │
 │                                                         │
-│               Cluelessatcoding 2022,2023                │
+│               Cluelessatcoding 2022-2024                │
 │                                                         │
 │                                                         │
 │                                                         │
@@ -350,7 +350,7 @@ cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity
 cp /usr/src/haproxy-${HAPROXYVERSION}/haproxy-${HAPROXYVERSION}/spoa-modsecurity/ModSecurity/modsecurity.conf-recommended /opt/modsecurity/modsecurity.conf
 
 #Update modsecurity.conf
-cat > /opt/modsecurity/modsecurity.conf << 'EOL'
+cat >> /opt/modsecurity/modsecurity.conf << 'EOL'
 
 include /opt/owasp-modsecurity-crs/crs-setup.conf
 include /opt/owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
