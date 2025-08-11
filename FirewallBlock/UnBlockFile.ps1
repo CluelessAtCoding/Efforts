@@ -28,21 +28,23 @@ Function Check-RunAsAdministrator()
     }
 }
 
-$filetobeunblocked=$args[0]
+$filetobeunblocked=$args
 
 #Check Script is running with Elevated Privileges
 Check-RunAsAdministrator
 
 Write-Host "The file path that will be unblocked is $filetobeunblocked"
 
-$matchingapprules = Get-NetFirewallApplicationFilter -Program $filetobeunblocked | Get-NetFirewallRule
+$matchingapprules = Get-NetFirewallApplicationFilter -Program "$($filetobeunblocked)" | Get-NetFirewallRule
 $wantedrules = $matchingapprules | Where-Object Description -eq "Custom Rule created from context menu"
 
+$x=0
 foreach ($rule in $wantedrules){
     $DisplayName = $rule.DisplayName
     Write-Host "Removing Rule $DisplayName"
     Remove-NetFirewallRule $rule.Name
+    $x++
 }
-$NumRules = $wantedrules.count
-Write-Host "$NumRules rules removed. "
+
+Write-Host "$($x) rule(s) removed. "
 start-sleep -seconds 5

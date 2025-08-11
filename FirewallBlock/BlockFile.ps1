@@ -28,13 +28,14 @@ Function Check-RunAsAdministrator()
     }
 }
 
-$filetobeblocked=$args[0]
+$filetobeblocked=$args
 
 #Check Script is running with Elevated Privileges
 Check-RunAsAdministrator
 
-Write-Host "The file path that will be blocked is $filetobeblocked"
+Write-Host "The file path that will be blocked is $($filetobeblocked)"
 $filename = $filetobeblocked.split("\")[-1]
 
-New-NetFirewallRule -DisplayName "Custom Outbound File Block - $filename" -Description "Custom Rule created from context menu" -Direction Outbound -Program $filetobeblocked -Action Block
+New-NetFirewallRule -DisplayName "Custom Outbound File Block - $filename" -Description "Custom Rule created from context menu" -Direction Outbound -Program "$($filetobeblocked)" -Action Block
+
 start-sleep -seconds 2
